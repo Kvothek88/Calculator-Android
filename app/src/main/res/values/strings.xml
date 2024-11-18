@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="concatenated_text">%s%s</string>
+</resources>
