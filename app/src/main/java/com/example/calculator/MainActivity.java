@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             input = input.trim();
 
-            if (input.startsWith("+")){
+            if (input.startsWith("+") || input.startsWith("*") || input.startsWith("/")){
                 input = input.substring(1);
                 numberInput.setText(input);
             }
@@ -358,6 +358,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // First, extract the operators from the input string
         char[] operators = input.replaceAll("[^+\\-*/]", "").toCharArray();
+        int consecutivesFound = 0;
 
         // Loop through the input string (except for the last character)
         for (int i = 0; i < input.length() - 1; i++) {
@@ -377,7 +378,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 // Add the operator index to positions list (index in the operators array)
-                positions.add(operatorIndex);
+                positions.add(operatorIndex - consecutivesFound);
+                consecutivesFound++;
             }
         }
 
