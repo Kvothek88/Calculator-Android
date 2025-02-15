@@ -94,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         numberInput.setText(updatedText);
                     }
                 }
+                else if (buttonChar == '0'){
+                    char lastChar = currentText.charAt(currentText.length()-1);
+                    if (lastChar == '/'){
+                        numberInput.setText("");
+                        Toast.makeText(this,"Can't divide by Zero", LENGTH_SHORT).show();
+                    }
+                }
                 else {
                     String updatedText = getString(R.string.concatenated_text, currentText, buttonText);
                     numberInput.setText(updatedText);
